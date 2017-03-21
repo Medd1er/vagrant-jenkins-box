@@ -1,26 +1,33 @@
 #!/bin/bash
-echo "===> Base script for Jenkins server"
 # Console colors
-NC="\033[39m"
-GR="\033[42m"
-RD="\033[41m"
-YW="\033[43m"
-BD="\033[1m"
+NC=$(echo -e "\033[0m")
+GR=$(echo -e "\033[32m")
+RD=$(echo -e "\033[31m")
+YW=$(echo -e "\033[33m")
+BD=$(echo -e "\033[1m")
+echo "-> Base script for Jenkins server"
 sudo su
 # Base packages install
-echo "$GR===> Updating repos$NC"
+echo "$BD$YW-> Updating repos$NC"
 yum update
-echo "$GR===> Installing additional packages$NC"
-yum install -y httpd wget
-echo "$GR===> Installing Java 8$NC"
+echo "$BD$YW-> Installing additional packages$NC"
+yum install -y wget yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum makecache fast
+echo "$BD$YW-> Installing Java 8$NC"
+# Creating folders
+mkdir ~/Downloads
+mkdir /usr/java
 # Java install
-mkdir Downloads /usr/java
-cd Downloads
+cd ~/Downloads
 wget http://javadl.oracle.com/webapps/download/AutoDL?BundleId=218822_e9e7ea248e2c4826b92b3f075a80e441 -O jre-8u121-linux-x64.rpm
 cd /usr/java
 rpm -ivh ~/Downloads/jre-8u121-linux-x64.rpm
+# Install Docker for pipelines
+yum -y install docker-ce
+systemctl start docker
+docker run hello-world
 # Jenkins install
-echo $GR"===> Installing Jenkins"$NC
+echo "$BD$YW-> Downloading Jenkins$NC"
 cd ~/Downloads/
 wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
-/usr/java/java -jar jenkins.war

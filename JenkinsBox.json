@@ -39,7 +39,7 @@
   ],
   "post-processors": [
     {
-      "output": "builds/{{.Provider}}-JenkinsBox-CentOS-7.box",
+      "output": "builds/JenkinsBox-CentOS-7.box",
       "type": "vagrant"
     }
   ]
