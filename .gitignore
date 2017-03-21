@@ -1,0 +1,9 @@
+# Ignoring cache and builds
+builds/
+packer_cache/
+output-virtual-box-iso
+.vagrant/
+
+# Ignoring Boxes
+*.box
+*.vdi
