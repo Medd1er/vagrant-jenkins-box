@@ -24,6 +24,7 @@ wget http://javadl.oracle.com/webapps/download/AutoDL?BundleId=218822_e9e7ea248e
 cd /usr/java
 rpm -ivh ~/Downloads/jre-8u121-linux-x64.rpm
 # Install Docker for pipelines
+echo "$BD$YW-> Installing Docker$NC"
 yum -y install docker-ce
 systemctl start docker
 docker run hello-world
