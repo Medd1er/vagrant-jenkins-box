@@ -9,7 +9,7 @@ sudo su
 echo "$BD$YW-> Jenkins Server startup$NC"
 cd ~/Downloads/
 java -jar jenkins.war &
-speep 60
+sleep 60
 JPWD=$(cat ~/.jenkins/secrets/initialAdminPassword)
 echo "$BD$YW-> Open link in your browser 'http://localhost:8080' and enter initial password generated below.$NC"
 echo "$BD$YW-> $JPWD$NC"

@@ -9,6 +9,11 @@ Vagrant.configure("2") do |config|
     # config.vm.box_version = "1.0.0"
     config.vm.hostname = "JenkinsBox-CentOS-7"
 
+    # SSH communication
+    config.ssh.username = "vagrant"
+    config.ssh.password = "vagrant"
+    config.ssh.insert_key = true
+
     # Networking
     config.vm.network "private_network", ip: "10.0.0.10"
     config.vm.network "forwarded_port", guest: 8080, host: 8080
@@ -19,17 +24,16 @@ Vagrant.configure("2") do |config|
     config.vm.synced_folder "./scripts", "/home/vagrant/scripts",
                             mount_options: ["dmode=777,fmode=777"],
                             create: true
-    end
-
-    # SSH communication
-    # config.ssh.username = "vagrant"
-    # config.ssh.password = "vagrant"
-    config.ssh.insert_key = true
 
     # Provider configuration
     config.vm.provider "virtualbox" do |vb|
     vb.memory = "1024"
     vb.cpus = 2
+    vb.gui = false
+    # vb.customize ["modifyvm", :id, "--ioapic", "on"]
+    # vb.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
+
+    end
 
     # Provision
     config.vm.provision "shell", inline: "systemctl restart network.service && ping 10.0.0.10 -c 4"

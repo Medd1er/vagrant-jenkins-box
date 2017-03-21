@@ -5,4 +5,4 @@ RD=$(echo -e "\033[31m")
 YW=$(echo -e "\033[33m")
 BD=$(echo -e "\033[1m")
 echo "$BD$YW-> Jenkins server is ready to serve $NC"
-echo "$BD$YW-> Initiating Jenkins Server. To proceed the installation\please follow the instructions$NC"
+echo "$BD$YW-> Initiating Jenkins Server. To proceed the installation please follow the instructions$NC"
