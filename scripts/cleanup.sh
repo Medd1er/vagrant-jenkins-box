@@ -8,7 +8,7 @@ printf "$BD$YW-> Cleaning...$NC\n"
 cd ~/Downloads
 rm jre-8u121-linux-x64.rpm
 # Removing
-yum remove -y gcc kernel-devel perl
+yum remove -y kernel-devel perl
 yum clean all
 # Zero out the rest of the free space using dd, then delete the written file.
 dd if=/dev/zero of=/EMPTY bs=1M
