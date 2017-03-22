@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
 
     # Base box config
     config.vm.box = "pxtw/JenkinsBox"
-    config.vm.box_check_update = true
+    # onfig.vm.box_check_update = true
     # config.vm.box_version = "1.0.0"
     config.vm.hostname = "JenkinsBox-CentOS-7"
 
